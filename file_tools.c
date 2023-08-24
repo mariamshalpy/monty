@@ -20,22 +20,22 @@ void open_file(char *file_name)
 
 /**
  * read_file - reads a file
- * @fd: pointer to file descriptor
- * Return: void
+ * @fd: pointer to file descripton
  */
 
 void read_file(FILE *fd)
 {
-	int line_number, format = 0;
+	int l, f = 0;
 	char *buffer = NULL;
 	size_t len = 0;
 
-	for (line_number = 1; getline(&buffer, &len, fd) != -1; line_number++)
+	for (l = 1; getline(&buffer, &len, fd) != -1; l++)
 	{
-		format = parse_line(buffer, line_number, format);
+		f = parse_line(buffer, l, f);
 	}
 	free(buffer);
 }
+
 
 
 /**
