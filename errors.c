@@ -1,16 +1,20 @@
 #include "monty.h"
 
 /**
- * err - Prints appropiate error messages determined by their error code.
- * @error_code: The error codes are the following:
+ * err - Prints appropiate error messages 
+ * @error_code: The error codes 
  */
+
+
+
+
 void err(int error_code, ...)
 {
-	va_list ag;
-	char *op;
+	va_list a;
+	char *o;
 	int l_num;
 
-	va_start(ag, error_code);
+	va_start(a, error_code);
 	switch (error_code)
 	{
 		case 1:
@@ -18,23 +22,25 @@ void err(int error_code, ...)
 			break;
 		case 2:
 			fprintf(stderr, "Error: Can't open file %s\n",
-				va_arg(ag, char *));
+				va_arg(a, char *));
 			break;
 		case 3:
-			l_num = va_arg(ag, int);
-			op = va_arg(ag, char *);
-			fprintf(stderr, "L%d: unknown instruction %s\n", l_num, op);
+			l_num = va_arg(a, int);
+			o = va_arg(a, char *);
+			fprintf(stderr, "L%d: unknown instruction %s\n", l_num, o);
 			break;
 		case 4:
 			fprintf(stderr, "Error: malloc failed\n");
 			break;
 		case 5:
-			fprintf(stderr, "L%d: usage: push integer\n", va_arg(ag, int));
+			fprintf(stderr, "L%d: usage: push integer\n", va_arg(a, int));
 			break;
 		default:
 			break;
 	}
+
 	free_nodes();
+
 	exit(EXIT_FAILURE);
 }
 
@@ -42,35 +48,39 @@ void err(int error_code, ...)
  * more_err - handles errors.
  * @error_code: The error codes are the following:
  */
+
+
+
 void more_err(int error_code, ...)
 {
-	va_list ag;
-	char *op;
+	va_list a;
+	char *o;
 	int l_num;
 
-	va_start(ag, error_code);
+	va_start(a, error_code);
 	switch (error_code)
 	{
 		case 6:
 			fprintf(stderr, "L%d: can't pint, stack empty\n",
-				va_arg(ag, int));
+				va_arg(a, int));
 			break;
 		case 7:
 			fprintf(stderr, "L%d: can't pop an empty stack\n",
-				va_arg(ag, int));
+				va_arg(a, int));
 			break;
 		case 8:
-			l_num = va_arg(ag, unsigned int);
-			op = va_arg(ag, char *);
-			fprintf(stderr, "L%d: can't %s, stack too short\n", l_num, op);
+			l_num = va_arg(a, unsigned int);
+			o = va_arg(a, char *);
+			fprintf(stderr, "L%d: can't %s, stack too short\n", l_num, o);
 			break;
 		case 9:
 			fprintf(stderr, "L%d: division by zero\n",
-				va_arg(ag, unsigned int));
+				va_arg(a, unsigned int));
 			break;
 		default:
 			break;
 	}
+
 	free_nodes();
 	exit(EXIT_FAILURE);
 }
@@ -79,13 +89,15 @@ void more_err(int error_code, ...)
  * string_err - handles errors.
  * @error_code: The error codes are the following:
  */
+
+
 void string_err(int error_code, ...)
 {
-	va_list ag;
+	va_list a;
 	int l_num;
 
-	va_start(ag, error_code);
-	l_num = va_arg(ag, int);
+	va_start(a, error_code);
+	l_num = va_arg(a, int);
 	switch (error_code)
 	{
 		case 10:
