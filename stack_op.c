@@ -40,7 +40,7 @@ void mod_nodes(stack_t **stack, unsigned int line_number)
 		more_err(9, line_number);
 	(*stack) = (*stack)->next;
 	s = (*stack)->n % (*stack)->prev->n;
-	(*stack)->n = sum;
+	(*stack)->n = s;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }
